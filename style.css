@@ -195,10 +195,12 @@ footer {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-family: inherit;
+    font-size: 1rem;
 }
 
 .contact-form textarea {
     height: 150px;
+    resize: vertical;
 }
 
 .contact-form button {
@@ -213,8 +215,13 @@ footer {
     width: 100%;
 }
 
-.contact-form button:hover {
+.contact-form button:hover:not(:disabled) {
     background: #c73e54;
+}
+
+.contact-form button:disabled {
+    background: #999;
+    cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
