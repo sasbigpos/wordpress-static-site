@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     phone: data.phone,
                     subject: data.subject,
                     message: data.message,
-                    source: "Web Form"   // Default source set here
+                    source: "Web Form"
                 })
             });
 
