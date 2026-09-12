@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Form data collected:", data);
 
         // Basic validation
-        if (!data.name || !data.email || !data.message) {
+        if (!data.name || !data.email || !data.phone || !data.message) {
             formStatus.textContent = "Please fill in all required fields.";
             formStatus.style.color = "red";
             return;
@@ -42,8 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({
                     name: data.name,
                     email: data.email,
+                    phone: data.phone,
                     subject: data.subject,
-                    message: data.message
+                    message: data.message,
+                    source: "Web Form"   // Default source set here
                 })
             });
 
