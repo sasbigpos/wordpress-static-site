@@ -1,3 +1,6 @@
+/* ============================
+   GLOBAL RESET & BASE STYLES
+   ============================ */
 * {
     margin: 0;
     padding: 0;
@@ -8,8 +11,12 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
+    background: #f4f6f8;
 }
 
+/* ============================
+   HEADER & NAVIGATION
+   ============================ */
 header {
     background: #1a1a2e;
     color: #fff;
@@ -17,6 +24,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 nav {
@@ -44,12 +52,16 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s;
+    font-weight: 500;
 }
 
 nav ul li a:hover {
     color: #e94560;
 }
 
+/* ============================
+   HERO SECTION
+   ============================ */
 .hero {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: #fff;
@@ -68,6 +80,9 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
+/* ============================
+   BUTTONS
+   ============================ */
 .btn {
     display: inline-block;
     background: #e94560;
@@ -76,12 +91,16 @@ nav ul li a:hover {
     border-radius: 5px;
     text-decoration: none;
     transition: background 0.3s;
+    font-weight: 500;
 }
 
 .btn:hover {
     background: #c73e54;
 }
 
+/* ============================
+   FEATURED POSTS (HOMEPAGE)
+   ============================ */
 .featured-posts {
     max-width: 1200px;
     margin: 3rem auto;
@@ -137,14 +156,9 @@ nav ul li a:hover {
     font-weight: bold;
 }
 
-footer {
-    background: #1a1a2e;
-    color: #fff;
-    text-align: center;
-    padding: 2rem;
-    margin-top: 3rem;
-}
-
+/* ============================
+   BLOG PAGE
+   ============================ */
 .blog-posts {
     max-width: 800px;
     margin: 2rem auto;
@@ -152,9 +166,11 @@ footer {
 }
 
 .blog-post {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #eee;
+    background: #fff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 .blog-post h2 {
@@ -175,55 +191,132 @@ footer {
     margin: 1rem 0;
 }
 
+/* ============================
+   CONTACT FORM
+   ============================ */
 .contact-form {
     max-width: 600px;
-    margin: 2rem auto;
-    padding: 0 20px;
+    margin: 3rem auto;
+    padding: 2.5rem 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .contact-form h2 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     color: #1a1a2e;
+    font-size: 1.6rem;
+}
+
+.contact-form > p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
 }
 
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea,
+.contact-form select {
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.2rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
     font-family: inherit;
     font-size: 1rem;
+    background: #fff;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: #7DC8A0;
+    box-shadow: 0 0 0 3px rgba(125, 200, 160, 0.2);
+}
+
+.contact-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+    cursor: pointer;
 }
 
 .contact-form textarea {
-    height: 150px;
+    height: 130px;
     resize: vertical;
+    min-height: 100px;
 }
 
 .contact-form button {
-    background: #e94560;
+    background: #7DC8A0;
     color: #fff;
     border: none;
-    padding: 0.8rem 2rem;
-    border-radius: 5px;
+    padding: 1rem 2rem;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background 0.3s;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
     width: 100%;
+    margin-top: 0.5rem;
 }
 
 .contact-form button:hover:not(:disabled) {
-    background: #c73e54;
+    background: #6AB88E;
+    transform: translateY(-1px);
 }
 
 .contact-form button:disabled {
     background: #999;
     cursor: not-allowed;
+    transform: none;
 }
 
+#formStatus {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+footer {
+    background: #1a1a2e;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+footer p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* ============================
+   RESPONSIVE DESIGN
+   ============================ */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -236,11 +329,42 @@ footer {
         gap: 0.5rem;
     }
     
+    .hero {
+        padding: 3rem 1rem;
+    }
+    
     .hero h1 {
         font-size: 2rem;
     }
     
+    .hero p {
+        font-size: 1rem;
+    }
+    
     .posts-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        margin: 1.5rem 1rem;
+        padding: 1.5rem 1.2rem;
+    }
+    
+    .contact-form h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+    
+    .featured-posts h2 {
+        font-size: 1.8rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
     }
 }
