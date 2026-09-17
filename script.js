@@ -20,14 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = Object.fromEntries(formData);
         console.log("Form data collected:", data);
 
-        // Basic validation
-        if (!data.name || !data.email || !data.phone || !data.message) {
+        // Validation
+        if (!data.name || !data.email || !data.phone || !data.state || !data.business_type || !data.message) {
             formStatus.textContent = "Please fill in all required fields.";
             formStatus.style.color = "red";
             return;
         }
 
-        // Disable button to prevent duplicate submissions
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending...";
         formStatus.textContent = "";
@@ -41,9 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({
                     name: data.name,
-                    email: data.email,
                     phone: data.phone,
-                    subject: data.subject,
+                    email: data.email,
+                    state: data.state,
+                    business_type: data.business_type,
                     message: data.message,
                     source: "Web Form"
                 })
@@ -52,6 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Response received:", response);
 
             if (response.ok) {
+                // Push event to Google Tag Manager dataLayer
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'contact_form_submission',
+                    'form_name': 'Consultation Form',
+                    'form_source': 'Web Form'
+                });
+
                 formStatus.textContent = "Thank you! Your message has been sent.";
                 formStatus.style.color = "green";
                 form.reset();
@@ -64,13 +72,12 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.textContent = "Connection error. Please check your internet and try again.";
             formStatus.style.color = "red";
         } finally {
-            // Re-enable button
             submitBtn.disabled = false;
-            submitBtn.textContent = "Send Message";
+            submitBtn.textContent = "Submit";
         }
     });
 
-    // Smooth scrolling for anchor links
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
